@@ -10,6 +10,7 @@ const assertArrayEqual =  function(actual, expected){
   }  
   for(let i = 0; i < actual.length; i++){
     if(actual[i] !== expected[i]){
+      console.log(actual[i])
       console.log(`🔴🔴🔴 Assertion Failed: ${actual} !== ${expected}`)
     return;
     }
