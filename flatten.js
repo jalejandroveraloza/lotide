@@ -1,15 +1,20 @@
-const flatten = function (nestedArray){
+const flatten = function(nestedArray) {
+  let flattened = [];
+
+  if (!Array.isArray(nestedArray)) {
+    return false;
+  }
+
+  for (let i = 0; i < nestedArray.length; i++) {
   
-if(Array.isArray(nestedArray)){
-  return nestedArray.flat();
-  /*for(let i = 0; i < nestedArray.length; i++){
-    flattenArray.push(nestedArray[i])
-  } */
-} else {
-  console.log('This is not an array, try again');
-}
+    if (Array.isArray(nestedArray[i])) {
+      flattened = flattened.concat(flatten(nestedArray[i]));
+    } else {
+      flattened.push(nestedArray[i]);
+    }
+  }
+  return flattened;
+};
 
-}
-
-console.log(flatten([1, 2, [3, 4], 5, [6]])) // => [1, 2, 3, 4, 5, 6]
+console.log(flatten([1, 2, [3, 4], 5, [6]])); // => [1, 2, 3, 4, 5, 6]
 console.log(flatten("HOla"));
