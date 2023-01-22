@@ -12,15 +12,22 @@ const eqArrays = function(array, array2){
 }
 
 const without = function(_source, itemsToRemove){
-  let newarray = []
-  for (let i = 0; i < _source.length; i++){
-    
-    if(_source[i] !== itemsToRemove[i]) {
-      newarray.push(_source[i])
+  let newarray = [];
+  
+  for (let i of _source){
+    let found = false;
+    for( let x of itemsToRemove){     
+      if(i === x) {
+        found = true;
+      }
     }
-  }
-  return newarray
+    if(found === false){
+      newarray.push(i)
+    }
+  } 
+ return newarray;
 }
 
 console.log(without([1, 2, 3], [1])); // => [2, 3]
 console.log(without(["1", "2", "3"], [1, 2, "3"])) // => ["1", "2"]
+console.log(without([1, 2, 3], [3])); //=> [1, 2]
