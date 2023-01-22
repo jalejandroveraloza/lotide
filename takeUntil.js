@@ -4,22 +4,30 @@
 //   for(let index of array){
 //   newArray.push(callback(index));
 //   }
-// } 
+// }
 //   return newArray;
 // }
 
-const takeUntil = function (array, callback){
+const takeUntil = function(array, callback) {
 
-const end = array.findIndex(callback);
-//console.log(end)
-return array.splice(0, end)
-  
-}
+  let newArray = [];
+  const end = callback;
+
+  for (let value of array) {
+    //console.log(value)
+    if (end(value)) {
+      return newArray;
+    } else {
+      newArray.push(value);
+    }
+  }
+  return newArray;
+};
 
 
 const data1 = [1, 2, 5, 7, 2, -1, 2, 4, 5];
 const results1 = takeUntil(data1, x => x < 0);
-console.log(results1)
+console.log(results1);
 
 console.log('---');
 
